@@ -1,9 +1,11 @@
 var currentScore = 0,
-    player = 0,
+    player = 1,
     game = true;
 // selecting image
 
 document.querySelector('.dice').style.display = 'none'
+
+
 document.querySelector('.roll').addEventListener('click', function() {
         let random = Math.floor((Math.random() * 6) + 1)
         let die = document.querySelector('.dice');
@@ -12,6 +14,18 @@ document.querySelector('.roll').addEventListener('click', function() {
         if (random !== 1) {
             currentScore += random
             document.querySelector(".player-" + player).innerHTML = currentScore
+ 
+            if(currentScore >= 25)
+            {
+                document.querySelector(".win_messege").innerHTML ="Player" + player + "Win the Match"
+                document.querySelector(".player-" + player).innerHTML = 0
+                currentScore = 0;
+document.querySelector('.dice').style.display = 'none'
+            
+            }
+
+ 
+ 
         } else {
             document.querySelector(".player-" + player).innerHTML = 0
             currentScore = 0;
@@ -25,7 +39,7 @@ document.querySelector('.hold').addEventListener('click', function() {
     document.querySelector(".T" + player).innerHTML = currentScore
     document.querySelector(".player-" + player).innerHTML = 0
     currentScore = 0;
-    player = player === 0 ? 1 : 0
+    player = player === 1 ? 2 : 1
 });
 /*
 
